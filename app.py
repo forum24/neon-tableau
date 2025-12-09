@@ -28,7 +28,7 @@ def fetch_data():
     conn = get_connection()
     query = """
         SELECT *
-        FROM pivot_presence
+        FROM pivot_presence_backup_20251201
         WHERE "Date" >= CURRENT_DATE - INTERVAL '30 days';
     """
     df = pd.read_sql(query, conn)
@@ -53,5 +53,4 @@ st.title("Presence List API")
 st.write("This endpoint exposes Neon PostgreSQL.")
 
 st.subheader("Preview data:")
-df = fetch_data()
-st.dataframe(df)
+st.dataframe(fetch_data())
